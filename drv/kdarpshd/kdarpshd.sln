@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kdarpshd", "kdarpshd.vcproj", "{41D9B6E8-7515-40A6-BE3A-E33160F8881C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{41D9B6E8-7515-40A6-BE3A-E33160F8881C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{41D9B6E8-7515-40A6-BE3A-E33160F8881C}.Debug|Win32.Build.0 = Debug|Win32
+		{41D9B6E8-7515-40A6-BE3A-E33160F8881C}.Release|Win32.ActiveCfg = Release|Win32
+		{41D9B6E8-7515-40A6-BE3A-E33160F8881C}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

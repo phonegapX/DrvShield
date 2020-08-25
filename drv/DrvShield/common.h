@@ -1,0 +1,50 @@
+#ifndef __COMMON_H__
+#define __COMMON_H__
+
+#ifndef MAX_PATH
+#define MAX_PATH 260
+#endif
+
+#define ParamBlockMagicFlag		'  DK'
+#define FileMagicFlag			'  DQ'
+#define PolicyFileName			"\\KdDrvAntiPolicy.dat"
+
+#pragma pack(push, 1)
+
+typedef struct _DRV_INFO
+{
+	ULONG TimeDateStamp;
+	ULONG CheckSum;
+	CHAR  Md5Digest[32];
+} DRV_INFO, *PDRV_INFO;
+
+typedef struct _DRV_ANTI_DATA
+{
+	ULONG DataMagic;
+	ULONG Count;
+	DRV_INFO DrvInfoEntry[1];
+	//数据最后是32个字节的MD5码
+} DRV_ANTI_DATA, *PDRV_ANTI_DATA;
+
+typedef struct _PARAMETER_BLOCK_DATA
+{
+	ULONG ParamBlockMagic;
+	CHAR  WorkPath[MAX_PATH];
+	ULONG DataSize;
+	DRV_ANTI_DATA DrvAntiData;
+} PARAMETER_BLOCK_DATA, *PPARAMETER_BLOCK_DATA;
+
+typedef struct _PARAMETER_BLOCK_PROCESS_ID
+{
+	ULONG ParamBlockMagic;
+	ULONG ProcessID;
+} PARAMETER_BLOCK_PROCESS_ID, *PPARAMETER_BLOCK_PROCESS_ID;
+
+#pragma pack(pop)
+
+#define IOCTL_SYS_DRV_MON_SET		CTL_CODE(FILE_DEVICE_UNKNOWN, 0x412, METHOD_BUFFERED, FILE_ANY_ACCESS)
+#define IOCTL_SYS_ADD_PROCESSID		CTL_CODE(FILE_DEVICE_UNKNOWN, 0x413, METHOD_BUFFERED, FILE_ANY_ACCESS)
+#define IOCTL_SYS_QUERY_DRIVER		CTL_CODE(FILE_DEVICE_UNKNOWN, 0x414, METHOD_BUFFERED, FILE_ANY_ACCESS)
+#define IOCTL_SYS_QUERY_COMPLETE	CTL_CODE(FILE_DEVICE_UNKNOWN, 0x415, METHOD_BUFFERED, FILE_ANY_ACCESS)
+
+#endif
